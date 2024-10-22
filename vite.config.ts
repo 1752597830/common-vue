@@ -9,8 +9,6 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons' // 支持svg
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
-  root: process.cwd(), // 绝对路径
   resolve: {
     // 配置路径别名
     alias: [
@@ -20,7 +18,6 @@ export default defineConfig({
         replacement: resolve(__dirname, './src'),
       },
     ],
-    extensions: ['.js', '.vue', '.json'],
   },
   // 按需导入element-plus main.js里不需要再引入了
   plugins: [
@@ -69,7 +66,7 @@ export default defineConfig({
       // 本地后端代理
       '/api': {
         //要访问的跨域的域名
-        target: 'http://localhost:8082',
+        target: 'http://localhost:8082/api',
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, ''),
       },
